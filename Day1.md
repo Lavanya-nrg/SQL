@@ -123,6 +123,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 SELECT CITY,STATE FROM STATION;       
@@ -142,6 +143,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 SELECT DISTINCT CITY FROM STATION WHERE MOD(ID,2)=0 ORDER BY CITY ASC;       
@@ -161,6 +163,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;       
@@ -181,6 +184,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 select city, length(city) from station order by length(city) DESC,city ASC fetch first row only;
@@ -200,6 +204,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 SELECT DISTINCT(CITY) FROM STATION WHERE CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' 
@@ -242,6 +247,7 @@ The STATION table is described as follows:
 | STATE  | VARCHAR2(2)  |
 | LAT_N |  NUMBER |
 | LONG_W | NUMBER |
+
 **Solution**
 ```sql
 SELECT DISTINCT CITY FROM STATION WHERE (CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' OR CITY LIKE 'U%') AND (CITY LIKE '%a' OR CITY LIKE '%e' OR CITY LIKE '%i' OR CITY LIKE '%o' OR CITY LIKE '%u') order by city;      
