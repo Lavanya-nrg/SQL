@@ -23,7 +23,7 @@ lower(SUBSTR(City,1,1)) NOT IN ('a','e','i','o','u');
 ```
 
 
-2)Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
+2) Query the list of CITY names from STATION that do not end with vowels. Your result cannot contain duplicates.
 Input Format
 
 The STATION table is described as follows:
@@ -46,7 +46,7 @@ WHERE UPPER(SUBSTR(City,LENGTH(City),1)) NOT IN ('A','E','I','O','U')
 AND LOWER(SUBSTR(City,LENGTH(City),1)) NOT IN ('a','e','i','o','u');
 ```
 
-3)Query the list of CITY names from STATION that either do not start with 
+3) Query the list of CITY names from STATION that either do not start with 
 vowels or do not end with vowels. Your result cannot contain duplicates.
 Input Format
 
@@ -71,7 +71,7 @@ OR LOWER(SUBSTR(City,LENGTH(CITY),1)) NOT IN ('a','e','i','o','u');
 ```
 
 
-4)Query the list of CITY names from STATION that do not start with 
+4) Query the list of CITY names from STATION that do not start with 
 vowels and do not end with vowels. Your result cannot contain duplicates.
 Input Format
 
@@ -95,7 +95,7 @@ WHERE LOWER(SUBSTR(CITY,1,1)) NOT IN ('a','e','i','o','u')
 AND LOWER(SUBSTR(City,LENGTH(CITY),1)) NOT IN ('a','e','i','o','u');
 ```
 
-5)Query the Name of any student in STUDENTS who scored higher than  Marks.
+5) Query the Name of any student in STUDENTS who scored higher than  Marks.
 Order your output by the last three characters of each name. If two or more 
 students both have names ending in the same last three characters 
 (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
@@ -140,7 +140,7 @@ WHERE MARKS>75 ORDER BY SUBSTR(NAME,LENGTH(NAME)-2,3),ID;
 ```
 
 
-6)Write a query that prints a list of employee names (i.e.: the name attribute) from the 
+6) Write a query that prints a list of employee names (i.e.: the name attribute) from the 
 Employee table in alphabetical order.
 
 Input Format
@@ -193,7 +193,7 @@ ORDER BY NAME;
 ```
 
 
-7)Write a query that prints a list of employee names (i.e.: the name attribute) for 
+7) Write a query that prints a list of employee names (i.e.: the name attribute) for 
 employees in Employee having a salary greater than $2000 per month who have been employees for 
 less than 10 months. Sort your result by ascending employee_id.
 
