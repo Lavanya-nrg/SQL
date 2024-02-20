@@ -385,6 +385,7 @@ Inner: If node is neither root nor leaf node.
 Sample Input
 
 | N | P |
+|-- | --|
 | 1 | 2 |
 | 3 | 2 |
 | 6 | 8 |
