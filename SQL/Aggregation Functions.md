@@ -223,3 +223,101 @@ where LAT_N is the northern latitude and LONG_W is the western longitude.
  from  STATION
  where LAT_N = (Select Max(LAT_N)from STATION where LAT_N < 137.2345);
 ```
+
+
+11) Query the smallest Northern Latitude (LAT_N) from STATION that is greater than . Round your answer to  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+| FIELD | TYPE |
+| ----- | ----- |
+| ID | NUMBER |
+| CITY |VARCHAR2(21) |
+| STATE| VARCHAR2(2) |
+| LAT_N | NUMBER |
+| LONG_W |NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT ROUND(MIN(LAT_N),4)
+FROM STATION
+WHERE LAT_N>38.7780;
+```
+
+
+12) Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than . Round your answer to  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+| FIELD | TYPE |
+| ----- | ----- |
+| ID | NUMBER |
+| CITY |VARCHAR2(21) |
+| STATE| VARCHAR2(2) |
+| LAT_N | NUMBER |
+| LONG_W |NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+
+**Solution**
+```sql
+SELECT ROUND(LONG_W,4)
+FROM STATION
+WHERE LAT_N=(
+    SELECT MIN(LAT_N) 
+    FROM STATION 
+    WHERE LAT_N>38.7780
+    );
+```
+
+13) Consider  and  to be two points on a 2D plane.
+
+ happens to equal the minimum value in Northern Latitude (LAT_N in STATION).
+ happens to equal the minimum value in Western Longitude (LONG_W in STATION).
+ happens to equal the maximum value in Northern Latitude (LAT_N in STATION).
+ happens to equal the maximum value in Western Longitude (LONG_W in STATION).
+Query the Manhattan Distance between points  and  and round it to a scale of  decimal places.
+
+Input Format
+
+The STATION table is described as follows:
+| FIELD | TYPE |
+| ----- | ----- |
+| ID | NUMBER |
+| CITY |VARCHAR2(21) |
+| STATE| VARCHAR2(2) |
+| LAT_N | NUMBER |
+| LONG_W |NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+**Solution**
+```sql
+SELECT ROUND(ABS(MIN(LAT_N)-MAX(LAT_N))+ABS(MIN(LONG_W)-MAX(LONG_W)),4)
+FROM STATION;
+```
+
+14) Consider  and  to be two points on a 2D plane where  are the respective minimum and maximum values of Northern Latitude (LAT_N) and  are the respective minimum and maximum values of Western Longitude (LONG_W) in STATION.
+
+Query the Euclidean Distance between points  and  and format your answer to display  decimal digits.
+
+Input Format
+
+The STATION table is described as follows:
+| FIELD | TYPE |
+| ----- | ----- |
+| ID | NUMBER |
+| CITY |VARCHAR2(21) |
+| STATE| VARCHAR2(2) |
+| LAT_N | NUMBER |
+| LONG_W |NUMBER |
+
+where LAT_N is the northern latitude and LONG_W is the western longitude.
+**Solution**
+```sql
+SELECT ROUND(SQRT(POWER(MAX(LAT_N)-MIN(LAT_N),2)+POWER(MAX(LONG_W)-MIN(LONG_W),2)),4)
+FROM STATION;
+```
