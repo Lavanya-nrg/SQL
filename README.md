@@ -50,3 +50,6 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Resource Used
+Utilized HackerRank for practice purposes.
