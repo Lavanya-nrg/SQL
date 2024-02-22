@@ -247,3 +247,119 @@ from worker w2
 where w2.salary >= w1.salary
 );
 ```
+
+35) Write an SQL query to fetch the list of employees with the same salary.
+
+**Solution**
+```sql
+SELECT * FROM WORKER w1,WORKER w2 WHERE w1.saalary=w2.salary AND w1.worker_id!=w2.worker_id; 
+```
+
+36) Write an SQL query to show the second highest salary from a table using sub-query.
+
+**Solution**
+```sql
+SELECT MAX(SALARY)
+FROM WORKER
+WHERE SALARY NOT IN(SELECT MAX(SALARY)
+FROM WORKER) 
+); 
+```
+
+37) Write an SQL query to show one row twice in results from a table.
+
+**Solution**
+```sql
+SELECT * FROM WORKER
+UNION ALL
+SELECT * FROM WORKER ORDER BY WORKER_ID;
+```
+
+38) Write an SQL query to list worker_id who does not get bonus.
+
+**Solution**
+```sql
+SELECT WORKER_ID FROM WORKER WHERE WORKER_ID NOT IN (SELECT WORKER_REF_ID FROM Bonus);
+```
+
+39) Write an SQL query to fetch the first 50% records from a table.
+
+**Solution**
+```sql
+SELECT * FROM WORKER WHERE WORKER_ID <= ( SELECT COUNT(WORKER_ID)/2 FROM WORKER );
+```
+
+40) Write an SQL query to fetch the departments that have less than 4 people in it.
+
+**Solution**
+```sql
+SELECT DEPARTMENT, COUNT(DEPARTMENT) FROM WORKER WHERE GROUP BY COUNT(DEPARTMENT)<4;
+```
+
+41) Write an SQL query to show all departments along with the number of people in there.
+
+**Solution**
+```sql
+SELECT DEPARTMENT, COUNT(DEPARTMENT) FROM WORKER WHERE GROUP BY DEPARTMENT;
+```
+
+42) Write an SQL query to show the last record from a table.ere.
+
+**Solution**
+```sql
+SELECT * FROM WORKER WHERE WORKER_ID=(SELECT MAX(WORKER_ID) FROM WORKER);
+```
+
+43) Write an SQL query to fetch the first row of a table
+
+**Solution**
+```sql
+SELECT * FROM WORKER WHERE WORKER_ID=(SELECT MIN(WORKER_ID) FROM WORKER);
+```
+
+44) Write an SQL query to fetch the last five records from a table.
+
+**Solution**
+```sql
+(SELECT * FROM WORKER ORDER BY WORKER_ID DESC LIMIT 5) ORDER BY WORKER_ID;
+```
+45) Write an SQL query to print the name of employees having the highest salary in each department.
+
+**Solution**
+```sql
+SELECT w.department, w.first_name,w.salary from(SELECT MAX(SALARY) AS MAXSALARY, DEPARTMENT FROM WORKER GROUP BY DEPARTMENT) AS temp INNER JOIN WORKER w on temp.department=w.department and temp MAXSALARY=w.salary;
+```
+
+46) Write an SQL query to fetch three max salaries from a table using co-related subquery
+
+**Solution**
+```sql
+SELECT w.department, w.first_name,w.salary from(SELECT MAX(SALARY) AS MAXSALARY, DEPARTMENT FROM WORKER GROUP BY DEPARTMENT) AS temp INNER JOIN WORKER w on temp.department=w.department and temp MAXSALARY=w.salary;
+```
+47) Write an SQL query to fetch three min salaries from a table using co-related subquery
+**Solution**
+```sql
+SELECT DISTINCT SALAARY FROM WORKER w1 WHERE 3>=(SELECT COUNT(DISTINCT SSALARY) FROM WRKER w2 WHERE w1.salary<=w2.salary) ORDER BY w1.salary DESC;
+```
+OR
+```sql
+SELECT DISTINCT SALARY FROM WORKER ORDER BY SALARY DESC LIMIT 3;
+```
+48) Write an SQL query to fetch nth max salaries from a table. 
+
+**Solution**
+```sql
+SELECT DISTINCT SALAARY FROM WORKER w1 WHERE N<=(SELECT COUNT(DISTINCT SSALARY) FROM WRKER w2 WHERE w1.salary<=w2.salary) ORDER BY w1.salary DESC;
+```
+49) Write an SQL query to fetch departments along with the total salaries paid for each of them.
+
+**Solution**
+```sql
+SELECT DEPARTMENT,SUM(SALARY) AS DEPTSAL FROM WORKER GROUP BY DEPARTMENT ORDER BY DEPTSAL DESC;
+```
+50) Write an SQL query to fetch the names of workers who earn the highest salary.
+
+**Solution**
+```sql
+SELECT first_name,salary FROM WORKER WHERE SALARY=(SELECT MAX(SALARY) FROM WORKER);
+```
