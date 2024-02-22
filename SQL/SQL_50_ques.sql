@@ -160,3 +160,90 @@ SELECT CONCAT(first_name,last_name) FROM WORKER WHERE SALARY BETWEEN 50000 and 1
 ```sql
 SELECT DEPARTMENT,COUNT(worker_id) FROM WORKER GROUP BY DEPARTMENT ORDER BY DEPARTMENT DESC;
 ```
+24) Write an SQL query to print details of the Workers who are also Managers.
+
+**Solution**
+```sql
+SELECT W. * FROM WORKER AS w INNER JOIN TITLE AS t ON w.id=t.worker_ref_id WHERE t.depaartment='MANAGER';
+```
+
+25) Write an SQL query to fetch number (more than 1) of same titles in the ORG of different types.
+
+
+**Solution**
+```sql
+SELECT WORKER_TITLE,COUNT(*) FROM TITLE GROUP BY WORKER_TITLE HAVING count>1; 
+```
+
+26) Write an SQL query to show only odd rows from a table.
+
+**Solution**
+```sql
+SELECT * FROM WORKER WHERE MOD(WORKER_ID,2)!=0; 
+```
+
+27) Write an SQL query to show only even rows from a table. 
+
+**Solution**
+```sql
+SELECT * FROM WORKER WHERE MOD(WORKER_ID,2)=0; 
+```
+
+28) Write an SQL query to clone a new table from another table.
+
+**Solution**
+```sql
+CREATE TABLE worker_clone LIKE worker;
+INSERT INTO worker_clone select * from worker;
+select * from worker_clone; 
+```
+
+29) Write an SQL query to fetch intersecting records of two tables.
+
+**Solution**
+```sql
+SELECT w. * FROM WORKER INNER JOIN WORKER_CLONE USING(WORKER_ID);
+```
+
+30) Write an SQL query to show records from one table that another table does not have.
+-- MINUS
+
+**Solution**
+```sql
+SELECT w. * FROM WORKER LEFT JOIN WORKER_CLONE USING(WORKER_ID) WHERE WORKER_CLONE.WORKER_ID=NULL;
+```
+
+31) Write an SQL query to show the current date and time.
+-- DUAL
+
+**Solution**
+```sql
+SELECT currdate();
+SELECT now();
+```
+
+32) Write an SQL query to show the top n (say 5) records of a table order by descending salary.
+
+**Solution**
+```sql
+SELECT * FROM WORKER ORDER BY SALARY DESC LIMIT 5;
+```
+
+33) Write an SQL query to determine the nth (say n=5) highest salary from a table.
+
+**Solution**
+```sql
+SELECT * FROM WORKER ORDER BY SALARY DESC LIMIT 4,1;
+```
+
+34) Write an SQL query to determine the 5th highest salary without using LIMIT keyword.
+
+**Solution**
+```sql
+select salary from worker w1
+WHERE 4 = (
+SELECT COUNT(DISTINCT (w2.salary))
+from worker w2
+where w2.salary >= w1.salary
+);
+```
